@@ -1,7 +1,7 @@
 
 INPUT_FILE = 'input/brainstem.csv' # input template should match ATLAS below
 
-OUTPUT_FOLDER = 'E:/Users/spectR/Desktop/%Rutgers/RESEARCH/brainpainter/output/Custom_output'
+OUTPUT_FOLDER = 'E:/Users/spectR/Desktop/%Rutgers/RESEARCH/brainpainter/brainpainter/output/Custom_output'
 
 # either 'DK', 'Destrieux', 'Tourville' or 'Custom'
 ATLAS = 'Custom'

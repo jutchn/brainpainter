@@ -96,8 +96,15 @@ if os.path.exists("cold.png") and os.path.exists("warm.png"):
     warm = Image.open('warm.png')
 
     cold_size = cold.size
-
-    new_im = Image.new('RGBA', (2*cold_size[0], cold_size[1]), (255,255,255,0))
+    warm_size = warm.size
+    if cold_size[0] < cold_size[1]:
+        cold = cold.transpose(Image.ROTATE_270)
+        cold_size = cold.size
+    if warm_size[0] < warm_size[1]:
+        warm = warm.transpose(Image.ROTATE_270)
+        warm_size = warm.size
+        
+    new_im = Image.new('RGBA', (warm_size[0] + cold_size[0], cold_size[1]), (255,255,255,0))
     new_im.paste(cold, (0,0))
     new_im.paste(warm, (cold_size[0],0))
 
@@ -105,6 +112,8 @@ if os.path.exists("cold.png") and os.path.exists("warm.png"):
     scale = Image.open('cold_warm.png')  
 elif os.path.exists("warm.png"):
     scale = Image.open('warm.png')
+    if scale.size[0] < scale.size[1]:
+        scale = scale.transpose(Image.ROTATE_270)
 else:
     raise ValueError('Missing color scale in output folder')
 
